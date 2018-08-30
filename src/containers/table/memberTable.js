@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import './table.css';
 import MemberList from './memberList';
 import arrowUp from '../../assets/icon/arrow_up.svg';
-import arrowDown from '../../assets/icon/arrow_down.svg';
+import SubHeader from '../../component/subheader/subHeader';
 
 class MemberTable extends Component{
     constructor(props){
@@ -15,6 +15,9 @@ class MemberTable extends Component{
 
         this.order = 'asc';
         this.sortMemberList = this.sortMemberList.bind(this);
+
+        this.handlePrevious = this.handlePrevious.bind(this);
+        this.handleNext = this.handleNext.bind(this);
     }
 
     sortByAsc = (list, sortBy) => {
@@ -47,75 +50,101 @@ class MemberTable extends Component{
         }
     }
 
+    handlePrevious(){
+        alert('previous data');
+    }
+
+    handleNext(){
+        alert('next data');
+    }
+
     render(){
         return(
-            <div className="table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>
-                                <label className="container">
-                                    <input
-                                        type="checkbox"
+            <Fragment>
+                <SubHeader previous={this.handlePrevious} next={this.handleNext} />
+                <div className="table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>
+                                    <label className="container">
+                                        <input
+                                            type="checkbox"
+                                        />
+                                        <span className="checkmark"></span>
+                                    </label>
+                                </th>
+                                <th>
+                                    <span 
+                                        className="table-header-label"
+                                        onClick={() => this.sortMemberList('name')}
+                                    >Name</span>
+                                    <img 
+                                        src={arrowUp} 
+                                        alt="arrow up" 
+                                        className="table-header-icon" 
+                                        onClick={() => this.sortMemberList('name')}
                                     />
-                                    <span className="checkmark"></span>
-                                </label>
-                            </th>
-                            <th>
-                                <span className="table-header-label">Name</span>
-                                <img 
-                                    src={arrowUp} 
-                                    alt="arrow up" 
-                                    className="table-header-icon" 
-                                    onClick={() => this.sortMemberList('name')}
-                                />
-                            </th>
-                            <th>
-                                <span className="table-header-label">Company</span>
-                                <img 
-                                    src={arrowUp} 
-                                    alt="arrow up" 
-                                    className="table-header-icon" 
-                                    onClick={() => this.sortMemberList('company')}
-                                />
-                            </th>
-                            <th>
-                                <span className="table-header-label">Status</span>
-                                <img 
-                                    src={arrowUp} 
-                                    alt="arrow up" 
-                                    className="table-header-icon" 
-                                    onClick={() => this.sortMemberList('status')}
-                                />
-                            </th>
-                            <th>
-                                <span className="table-header-label">Last Updated</span>
-                                <img 
-                                    src={arrowUp} 
-                                    alt="arrow up" 
-                                    className="table-header-icon" 
-                                    onClick={() => this.sortMemberList('date')}
-                                />
-                            </th>
-                            <th>
-                                <span className="table-header-label">Notes</span>
-                                <img 
-                                    src={arrowUp} 
-                                    alt="arrow up" 
-                                    className="table-header-icon" 
-                                    onClick={() => this.sortMemberList('note')}
-                                />
-                            </th>
-                            <th></th>
-                        </tr>
-                    </thead>
+                                </th>
+                                <th>
+                                    <span 
+                                        className="table-header-label"
+                                        onClick={() => this.sortMemberList('company')}
+                                    >Company</span>
+                                    <img 
+                                        src={arrowUp} 
+                                        alt="arrow up" 
+                                        className="table-header-icon" 
+                                        onClick={() => this.sortMemberList('company')}
+                                    />
+                                </th>
+                                <th>
+                                    <span 
+                                        className="table-header-label"
+                                        onClick={() => this.sortMemberList('status')}
+                                    >Status</span>
+                                    <img 
+                                        src={arrowUp} 
+                                        alt="arrow up" 
+                                        className="table-header-icon" 
+                                        onClick={() => this.sortMemberList('status')}
+                                    />
+                                </th>
+                                <th>
+                                    <span 
+                                        className="table-header-label"
+                                        onClick={() => this.sortMemberList('date')}
+                                    >Last Updated</span>
+                                    <img 
+                                        src={arrowUp} 
+                                        alt="arrow up" 
+                                        className="table-header-icon" 
+                                        onClick={() => this.sortMemberList('date')}
+                                    />
+                                </th>
+                                <th>
+                                    <span 
+                                        className="table-header-label"
+                                        onClick={() => this.sortMemberList('note')}
+                                    >Notes</span>
+                                    <img 
+                                        src={arrowUp} 
+                                        alt="arrow up" 
+                                        className="table-header-icon" 
+                                        onClick={() => this.sortMemberList('note')}
+                                    />
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
 
-                    <tbody>
-                        { this.state.member.map((list, index) => 
-                        <MemberList key={index} id={index} member={list} />) }
-                    </tbody>
-                </table>
-            </div>
+                        <tbody>
+                            { this.state.member.map((list, index) => 
+                            <MemberList key={index} id={index} member={list} />) }
+                        </tbody>
+                    </table>
+                </div>
+            </Fragment>
         );
     }
 }

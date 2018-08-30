@@ -1,0 +1,66 @@
+.header-bottom{
+    background-color: #ffffff;
+    height: 65px;
+}
+.header-left, .total-numberpage{
+    float: left;
+}
+.header-left{
+    margin-top: 10px;
+}
+.pagination-btn{
+    float: right;
+    margin-right: 37px;
+}
+.header-right{
+    float: right;
+    width: 240px;
+    margin-top: 15px;
+}
+.header-drop1{
+    width: 120px;
+    margin-left: 37px;
+    float: left;
+}
+.header-drop2{
+    float: right;
+    margin-left: 10px;
+}
+input[type=text], select, textarea {
+    width: 250px;
+    padding: 9px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+    background-color: #ffffff;
+}
+.total-numberpage{
+    font-size: 14px;
+    font-weight: normal;
+    letter-spacing: normal;
+    margin-top: 10px;
+}
+.text-opacity{
+    opacity: 0.5;
+}
+.paginationbtn {
+    padding: 3px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    color: #ffffff;
+    cursor: pointer;
+}
+.previmg{
+    -ms-transform: rotate(90deg); /* IE 9 */
+    -webkit-transform: rotate(90deg); /* Safari 3-8 */
+    transform: rotate(90deg);
+}
+.nextimg{
+    -ms-transform: rotate(270deg); /* IE 9 */
+    -webkit-transform: rotate(270deg); /* Safari 3-8 */
+    transform: rotate(270deg);
+}

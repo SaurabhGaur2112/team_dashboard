@@ -28,6 +28,7 @@ table tr:nth-child(odd){
     font-style: normal;
     letter-spacing: normal;
     color: #333333;
+    cursor: pointer;
 }
 .table-header-icon{
     position: absolute;

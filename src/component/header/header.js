@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './header.css';
+import SubHeader from '../subheader/subHeader';
 
 class Header extends Component{
     render(){
@@ -14,10 +15,6 @@ class Header extends Component{
                             <button className="header-add-button" onClick={this.props.onClick}>Add Member +</button>
                         </div>
                     </div>
-                </div>
-    
-                <div className="header-bottom">
-    
                 </div>
             </div>
         );

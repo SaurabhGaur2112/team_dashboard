@@ -1,10 +1,7 @@
 .header{
-    height: 152px;
-    background-color: #ffffff;
-}
-.header-head{
-    border-bottom: 2px solid rgba(51, 51, 51, 0.1);
     height: 78px;
+    background-color: #ffffff;
+    border-bottom: 2px solid rgba(51, 51, 51, 0.1);
 }
 
 /* title */

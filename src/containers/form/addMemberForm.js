@@ -64,7 +64,7 @@ class AddMemberForm extends Component{
                 </div>
 
                 <div>
-                <label htmlFor="status">Status</label>
+                    <label htmlFor="status">Status</label>
                     <select value={this.state.status} name="status" onChange={this.handleChange}>
                         <option value="default">Select Status</option>
                         <option value="closed">Closed</option>
