@@ -8,7 +8,6 @@ class AddMemberForm extends Component{
     constructor(props){
         super(props);
 
-        var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         var today  = new Date();
 
         this.state = {

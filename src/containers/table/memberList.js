@@ -44,7 +44,7 @@ class MemberList extends Component{
                                     <img src={edit} alt="edit" className="dropdown-icon" />
                                     <span className="dropdown-font">Edit</span>
                                 </li>
-                                <li onClick={() => this.props.memberDelete(this.props.id)}>
+                                <li onClick={() => this.props.memberDelete(this.props.member.id)}>
                                     <img src={trash} alt="edit" className="dropdown-icon" />
                                     <span className="dropdown-font">Delete</span>
                                 </li>

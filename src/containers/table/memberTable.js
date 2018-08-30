@@ -15,7 +15,8 @@ class MemberTable extends Component{
             memberPerPage: 5,
             buttonDisable: false,
             count: 1,
-            allchecked: false
+            allchecked: false,
+            iconRotate: false
         };
 
         this.totalMember = this.state.member.length;
@@ -36,18 +37,32 @@ class MemberTable extends Component{
         this.headerCheckbox = this.headerCheckbox.bind(this);
     }
 
+    componentWillReceiveProps(nextProps){
+        if (nextProps.lists.length != this.props.lists.length){
+            this.setState({
+                member: nextProps.lists
+            });
+        }
+    }
+
     sortByAsc = (list, sortBy) => {
-        var a = list.sort(function(obj1, obj2){
-            return obj1[sortBy] > obj2[sortBy];
+        let sortedArray = list.sort(function (obj1, obj2) {
+            if (obj1[sortBy].toLowerCase() < obj2[sortBy].toLowerCase()) return -1;
+            else if (obj1[sortBy].toLowerCase() > obj2[sortBy].toLowerCase()) return 1;
+            return 0;
         });
-        return a;
+        console.log("ASC", sortedArray);
+        return sortedArray;
     }
 
     sortByDesc = (list, sortBy) => {
-        var a = list.sort(function(obj1, obj2){
-            return obj1[sortBy] < obj2[sortBy];
+        let reverseSortedArray = list.sort(function (obj1, obj2) {
+            if (obj1[sortBy].toLowerCase() > obj2[sortBy].toLowerCase()) return -1;
+            else if (obj1[sortBy].toLowerCase() < obj2[sortBy].toLowerCase()) return 1;
+            return 0;
         });
-        return a;
+        console.log("Desc", reverseSortedArray);
+        return reverseSortedArray;
     }
 
     sortMemberList = (sortBy) => {
@@ -56,12 +71,14 @@ class MemberTable extends Component{
         if(this.order === 'asc'){
             this.order = 'desc';
             this.setState({
-                member: this.sortByDesc(this.state.member, sortBy)
+                member: this.sortByDesc(this.state.member, sortBy),
+                iconRotate: true
             });
         } else {
             this.order = 'asc';
             this.setState({
-                member: this.sortByAsc(this.state.member, sortBy)
+                member: this.sortByAsc(this.state.member, sortBy),
+                iconRotate: false
             });
         }
     }
@@ -102,8 +119,8 @@ class MemberTable extends Component{
         const indexOfFirstMember = indexOfLastMember - this.state.memberPerPage;
         const currentMembers = this.state.member.slice(indexOfFirstMember, indexOfLastMember);
 
-        const renderMembers = currentMembers.map((list, index) => {
-            return <MemberList key={index} id={index} member={list} checkValue={this.state.allchecked} />
+        const renderMembers = currentMembers.map((list) => {
+            return <MemberList key={list.id} member={list} checkValue={this.state.allchecked} />
         });
 
         const renderCompany = this.state.member.map((list, index) => {
@@ -140,8 +157,8 @@ class MemberTable extends Component{
                                     >Name</span>
                                     <img 
                                         src={arrowUp} 
-                                        alt="arrow up" 
-                                        className="table-header-icon" 
+                                        alt="arrow up"
+                                        className={this.state.iconRotate ? "table-header-icon icon-rotate" : "table-header-icon"}
                                         onClick={() => this.sortMemberList('name')}
                                     />
                                 </th>
@@ -153,7 +170,7 @@ class MemberTable extends Component{
                                     <img 
                                         src={arrowUp} 
                                         alt="arrow up" 
-                                        className="table-header-icon" 
+                                        className={this.state.iconRotate ? "table-header-icon icon-rotate" : "table-header-icon"}
                                         onClick={() => this.sortMemberList('company')}
                                     />
                                 </th>
@@ -165,7 +182,7 @@ class MemberTable extends Component{
                                     <img 
                                         src={arrowUp} 
                                         alt="arrow up" 
-                                        className="table-header-icon" 
+                                        className={this.state.iconRotate ? "table-header-icon icon-rotate" : "table-header-icon"}
                                         onClick={() => this.sortMemberList('status')}
                                     />
                                 </th>
@@ -177,7 +194,7 @@ class MemberTable extends Component{
                                     <img 
                                         src={arrowUp} 
                                         alt="arrow up" 
-                                        className="table-header-icon" 
+                                        className={this.state.iconRotate ? "table-header-icon icon-rotate" : "table-header-icon"}
                                         onClick={() => this.sortMemberList('date')}
                                     />
                                 </th>
@@ -189,7 +206,7 @@ class MemberTable extends Component{
                                     <img 
                                         src={arrowUp} 
                                         alt="arrow up" 
-                                        className="table-header-icon" 
+                                        className={this.state.iconRotate ? "table-header-icon icon-rotate" : "table-header-icon"}
                                         onClick={() => this.sortMemberList('note')}
                                     />
                                 </th>
