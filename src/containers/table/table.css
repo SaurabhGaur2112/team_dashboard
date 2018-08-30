@@ -1,0 +1,163 @@
+.table{
+    margin: 20px 35px 35px 35px;
+}
+table{
+    width: 100%;
+    margin: auto;
+}
+table th{
+    background-color: #fbfbfb;
+}
+table, th, td{
+    border-collapse: collapse;
+}
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+table tr:nth-child(even){
+    background-color: #eee;
+}
+table tr:nth-child(odd){
+    background-color: #fff;
+}
+.table-header-label{
+    opacity: 0.5;
+    font-size: 14px;
+    font-weight: 900;
+    font-style: normal;
+    letter-spacing: normal;
+    color: #333333;
+}
+table td span{
+    font-size: 14px;
+    line-height: 1.71;
+    letter-spacing: normal;
+    text-align: left;
+    color: #333333;
+    text-overflow: ellipsis;
+}
+table td img{
+    cursor: pointer;
+}
+
+
+/* checkbox */
+.container {
+    cursor: pointer;
+}
+/* Hide the browser's default checkbox */
+.container input {
+    opacity: 0;
+    cursor: pointer;
+}
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    height: 12px;
+    width: 12px;
+    margin-top: 4px;
+    background-color: #eee;
+    border: 1px solid #d6d3d3;
+}
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+    background-color: #4b74ff;
+}
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+.container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+/* drop down */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown > img {
+    display: inline-block;
+}
+.dropdown > img:before {
+    position: absolute;
+    right: 7px;
+    top: 12px;
+    content: ' ';
+}
+.dropdown input[type=checkbox] {
+    position: absolute;
+    cursor: pointer;
+    display: block;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    opacity: 0;
+}
+.dropdown input[type=checkbox]:checked {
+    position: fixed;
+    z-index:+0;
+    top: 0px; left: 0px; 
+    right: 0px; bottom: 0px;
+}
+.dropdown ul {
+    position: absolute;
+    top: 4px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    left: -135px;
+    list-style: none;
+    padding: 4px 0px;
+    display: none;
+    background-color: white;
+    box-shadow: 0 3px 6px rgba(0,0,0,.175);
+}
+.dropdown input[type=checkbox]:checked + ul {
+    display: block;
+}
+.dropdown ul li {
+    display: block;
+    padding: 6px 20px;
+    white-space: nowrap;
+    min-width: 100px;
+}
+.dropdown ul li:hover {
+    background-color: #F5F5F5;
+    cursor: pointer;
+}
+.dropdown ul li a {
+    text-decoration: none;
+    display: block;
+    color: black
+}
+.dropdown .divider {
+    height: 1px;
+    margin: 9px 0;
+    overflow: hidden;
+    background-color: #e5e5e5;
+    font-size: 1px;
+    padding: 0;
+}
+.dropdown-icon{
+    height: 16px;
+    position: absolute;
+    margin-top: 5px;
+}
+.dropdown-font{
+    margin-left: 28px;
+}

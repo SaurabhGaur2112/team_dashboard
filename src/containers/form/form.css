@@ -1,0 +1,38 @@
+.form{
+    margin-top: 74px;
+}
+label{
+    color: #333333;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    letter-spacing: normal;
+}
+input[type=text], select, textarea {
+    width: 100%;
+    padding: 9px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+input[type=submit] {
+    padding: 5px 15px;
+    font-size: 14px;
+    border-radius: 24px;
+    background-color: #4b74ff;
+    border:1px solid #fff;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+    font-weight: normal;
+    line-height: 1.71;
+    display: block;
+    margin: 0 auto;
+}
+textarea{
+    height: 80px;
+    resize: none;
+}
