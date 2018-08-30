@@ -29,6 +29,10 @@ table tr:nth-child(odd){
     letter-spacing: normal;
     color: #333333;
 }
+.table-header-icon{
+    position: absolute;
+    cursor: pointer;
+}
 table td span{
     font-size: 14px;
     line-height: 1.71;
