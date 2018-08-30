@@ -10,8 +10,21 @@ class MemberTable extends Component{
         super(props);
 
         this.state = {
-            member: props.lists
+            member: props.lists,
+            currentPage: 1,
+            memberPerPage: 5,
+            buttonDisable: false,
+            count: 1
         };
+
+        this.totalMember = this.state.member.length;
+        this.pageDivision = this.totalMember / this.state.memberPerPage;
+
+        if(Number.isInteger(this.pageDivision)){
+            this.pageCount = this.pageDivision;
+        } else {
+            this.pageCount = parseInt(this.pageDivision) + 1;
+        }
 
         this.order = 'asc';
         this.sortMemberList = this.sortMemberList.bind(this);
@@ -51,17 +64,42 @@ class MemberTable extends Component{
     }
 
     handlePrevious(){
-        alert('previous data');
+        if(this.state.currentPage > 1){
+            this.setState({
+                currentPage: this.state.currentPage - 1,
+                count: this.state.count - 1
+            });    
+        }
     }
 
     handleNext(){
-        alert('next data');
+        if(this.state.count < this.pageCount){
+            this.setState({
+                currentPage: this.state.currentPage + 1,
+                count: this.state.count + 1
+            });
+        }
     }
 
     render(){
+
+        const indexOfLastMember = this.state.currentPage * this.state.memberPerPage;
+        const indexOfFirstMember = indexOfLastMember - this.state.memberPerPage;
+        const currentMembers = this.state.member.slice(indexOfFirstMember, indexOfLastMember);
+
+        const renderMembers = currentMembers.map((list, index) => {
+            return <MemberList key={index} id={index} member={list} />
+        });
+
         return(
             <Fragment>
-                <SubHeader previous={this.handlePrevious} next={this.handleNext} />
+                <SubHeader 
+                    previous={this.handlePrevious} 
+                    next={this.handleNext} 
+                    indexFirstMember={indexOfFirstMember}
+                    indexLastMember={indexOfLastMember}
+                    totalList={this.totalMember}
+                />
                 <div className="table">
                     <table>
                         <thead>
@@ -139,8 +177,7 @@ class MemberTable extends Component{
                         </thead>
 
                         <tbody>
-                            { this.state.member.map((list, index) => 
-                            <MemberList key={index} id={index} member={list} />) }
+                            {renderMembers}
                         </tbody>
                     </table>
                 </div>

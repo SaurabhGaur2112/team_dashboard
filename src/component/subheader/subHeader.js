@@ -27,9 +27,9 @@ class SubHeader extends Component{
                 <div className="header-right">
                     <div className="total-numberpage">
                         <span className="text-opacity">Viewing&nbsp;</span>
-                        <span> 1-20 </span>
+                        <span> {this.props.indexFirstMember + 1}- {this.props.indexLastMember} </span>
                         <span className="text-opacity">&nbsp;of&nbsp;</span>
-                        <span>36</span>
+                        <span> {this.props.totalList} </span>
                     </div>
                     <div className="pagination-btn">
                         <button className="paginationbtn" onClick={this.props.previous}>
