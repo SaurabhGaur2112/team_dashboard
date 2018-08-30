@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import modal from './modal';
+import member from './member';
 
 export const allReducers = combineReducers({
-    modal: modal
+    member: member
 });

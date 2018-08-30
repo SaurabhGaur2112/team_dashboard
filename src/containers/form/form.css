@@ -17,6 +17,7 @@ input[type=text], select, textarea {
     margin-top: 6px;
     margin-bottom: 16px;
     resize: vertical;
+    background-color: #ffffff;
 }
 input[type=submit] {
     padding: 5px 15px;
