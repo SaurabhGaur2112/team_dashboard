@@ -14,7 +14,8 @@ class MemberTable extends Component{
             currentPage: 1,
             memberPerPage: 5,
             buttonDisable: false,
-            count: 1
+            count: 1,
+            allchecked: false
         };
 
         this.totalMember = this.state.member.length;
@@ -31,6 +32,8 @@ class MemberTable extends Component{
 
         this.handlePrevious = this.handlePrevious.bind(this);
         this.handleNext = this.handleNext.bind(this);
+
+        this.headerCheckbox = this.headerCheckbox.bind(this);
     }
 
     sortByAsc = (list, sortBy) => {
@@ -81,6 +84,18 @@ class MemberTable extends Component{
         }
     }
 
+    headerCheckbox(){
+        if(this.state.allchecked == false){
+            this.setState({
+                allchecked: true
+            });
+        } else {
+            this.setState({
+                allchecked: false
+            });
+        }
+    }
+
     render(){
 
         const indexOfLastMember = this.state.currentPage * this.state.memberPerPage;
@@ -88,7 +103,11 @@ class MemberTable extends Component{
         const currentMembers = this.state.member.slice(indexOfFirstMember, indexOfLastMember);
 
         const renderMembers = currentMembers.map((list, index) => {
-            return <MemberList key={index} id={index} member={list} />
+            return <MemberList key={index} id={index} member={list} checkValue={this.state.allchecked} />
+        });
+
+        const renderCompany = this.state.member.map((list, index) => {
+            return <option key={index} id={index}>{list.company}</option>
         });
 
         return(
@@ -99,6 +118,7 @@ class MemberTable extends Component{
                     indexFirstMember={indexOfFirstMember}
                     indexLastMember={indexOfLastMember}
                     totalList={this.totalMember}
+                    companyList={renderCompany}
                 />
                 <div className="table">
                     <table>
@@ -108,6 +128,7 @@ class MemberTable extends Component{
                                     <label className="container">
                                         <input
                                             type="checkbox"
+                                            onClick={this.headerCheckbox}
                                         />
                                         <span className="checkmark"></span>
                                     </label>

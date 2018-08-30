@@ -6,13 +6,11 @@ class SubHeader extends Component{
     render(){
         return(
             <div className="header-bottom">
+                {this.props.lists}
                 <div className="header-left">
                     <div className="header-drop1">
                         <select value="" name="status">
-                            <option value="default">Company (2)</option>
-                            <option value="closed">Closed</option>
-                            <option value="active">Active</option>
-                            <option value="idle">Idle</option>
+                            {this.props.companyList}
                         </select>
                     </div>
                     <div className="header-drop2">

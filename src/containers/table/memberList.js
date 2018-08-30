@@ -14,6 +14,7 @@ class MemberList extends Component{
                     <label className="container">
                         <input
                             type="checkbox"
+                            checked={this.props.checkValue ? "checked" : ""}
                         />
                         <span className="checkmark"></span>
                     </label>
