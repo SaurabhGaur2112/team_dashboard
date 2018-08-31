@@ -13,18 +13,21 @@ class App extends Component{
         this.modalToggle = this.modalToggle.bind(this);
     }
 
-    modalToggle(value){
+    modalToggle(){
         this.setState({
-            isModalOpen: value
+            isModalOpen: !this.state.isModalOpen
         });
     }
 
     render(){
         return(
             <Fragment>
-                <Header onClick={() => this.modalToggle(true)} />
+                <Header onClick={this.modalToggle} />
                 <MemberTable />
-                <AddMemberModal modalOpen={this.state.isModalOpen} onClick={() => this.modalToggle(false)} />
+                <AddMemberModal 
+                    modalOpen={this.state.isModalOpen} 
+                    onClick={this.modalToggle} 
+                />
             </Fragment>
         );
     }

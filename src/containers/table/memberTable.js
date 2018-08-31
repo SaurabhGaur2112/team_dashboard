@@ -102,15 +102,9 @@ class MemberTable extends Component{
     }
 
     headerCheckbox(){
-        if(this.state.allchecked == false){
-            this.setState({
-                allchecked: true
-            });
-        } else {
-            this.setState({
-                allchecked: false
-            });
-        }
+        this.setState({
+            allchecked: !this.state.allchecked
+        });
     }
 
     render(){
@@ -123,7 +117,7 @@ class MemberTable extends Component{
             return <MemberList key={list.id} member={list} checkValue={this.state.allchecked} />
         });
 
-        const renderCompany = this.state.member.map((list, index) => {
+        const renderCompany = this.props.lists.map((list, index) => {
             return <option key={index} id={index}>{list.company}</option>
         });
 

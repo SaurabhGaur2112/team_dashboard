@@ -1,54 +1,17 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import './form.css';
-import { bindActionCreators } from 'redux';
-import { memberAdd } from '../../action/index';
 
 class AddMemberForm extends Component{
-    constructor(props){
-        super(props);
-
-        var today  = new Date();
-
-        this.state = {
-            name: '',
-            company: '',
-            status: 'default',
-            date: today.toLocaleDateString("en-US"),
-            note: ''
-        };
-
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    handleChange(event){
-        this.setState({
-            [event.target.name]: event.target.value
-        });
-    }
-
-    handleSubmit(event){
-        event.preventDefault();
-        this.props.memberAdd(this.state);
-        this.setState({
-            name: '',
-            company: '',
-            status: 'default',
-            note: ''
-        });
-    }
-
     render(){
         return(
-            <form className="form" onSubmit={this.handleSubmit}>
+            <form className="form" onSubmit={this.props.onSubmit}>
                 <div>
                     <label htmlFor="name">Name</label>
                     <input
                         type="text"
                         name="name"
-                        value={this.state.name}
-                        onChange={this.handleChange}
+                        value={this.props.name}
+                        onChange={this.props.onChange}
                     />
                 </div>
 
@@ -57,14 +20,14 @@ class AddMemberForm extends Component{
                     <input
                         type="text"
                         name="company"
-                        value={this.state.company}
-                        onChange={this.handleChange}
+                        value={this.props.company}
+                        onChange={this.props.onChange}
                     />
                 </div>
 
                 <div>
                     <label htmlFor="status">Status</label>
-                    <select value={this.state.status} name="status" onChange={this.handleChange}>
+                    <select value={this.props.status} name="status" onChange={this.props.onChange}>
                         <option value="default">Select Status</option>
                         <option value="closed">Closed</option>
                         <option value="active">Active</option>
@@ -74,7 +37,7 @@ class AddMemberForm extends Component{
 
                 <div>
                     <label htmlFor="note">Note</label>
-                    <textarea name="note" onChange={this.handleChange} value={this.state.note}></textarea>
+                    <textarea name="note" onChange={this.props.onChange} value={this.props.note}></textarea>
                 </div>
 
                 <div>
@@ -88,10 +51,4 @@ class AddMemberForm extends Component{
     }
 }
 
-function matchDispatchToProps(dispatch){
-    return bindActionCreators({
-        memberAdd: memberAdd
-    }, dispatch);
-}
-
-export default connect(null, matchDispatchToProps)(AddMemberForm);
+export default AddMemberForm;

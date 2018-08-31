@@ -30,6 +30,7 @@ export default function(state = [], action){
                 member.push(task);
                 localStorage.setItem('member', JSON.stringify(member));
             }
+
             return member;
             break;
 

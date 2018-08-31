@@ -7,6 +7,28 @@ import { bindActionCreators } from 'redux';
 import { memberDelete } from '../../action/index';
 
 class MemberList extends Component{
+    constructor(props){
+        super(props);
+
+        this.state = {
+            checkmark: props.checkValue
+        };
+
+        this.handleCheckbox = this.handleCheckbox.bind(this);
+    }
+
+    componentWillReceiveProps(nextProps){
+        this.setState({
+            checkmark: nextProps.checkValue
+        });
+    }
+
+    handleCheckbox(){
+        this.setState({
+            checkmark: !this.state.checkmark
+        });
+    }
+
     render(){
         return(
             <tr>
@@ -14,7 +36,8 @@ class MemberList extends Component{
                     <label className="container">
                         <input
                             type="checkbox"
-                            checked={this.props.checkValue ? "checked" : ""}
+                            checked={this.state.checkmark ? "checked" : ""}
+                            onClick={this.handleCheckbox}
                         />
                         <span className="checkmark"></span>
                     </label>
