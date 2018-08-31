@@ -22,8 +22,11 @@ class App extends Component{
     render(){
         return(
             <Fragment>
+                {/* header */}
                 <Header onClick={this.modalToggle} />
+                {/* member table */}
                 <MemberTable />
+                {/* add member modal */}
                 <AddMemberModal 
                     modalOpen={this.state.isModalOpen} 
                     onClick={this.modalToggle} 

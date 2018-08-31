@@ -45,6 +45,7 @@ class MemberTable extends Component{
         }
     }
 
+    /* sort by ascending order */
     sortByAsc = (list, sortBy) => {
         let sortedArray = list.sort(function (obj1, obj2) {
             if (obj1[sortBy].toLowerCase() < obj2[sortBy].toLowerCase()) return -1;
@@ -55,6 +56,7 @@ class MemberTable extends Component{
         return sortedArray;
     }
 
+    /* sort by descending order */
     sortByDesc = (list, sortBy) => {
         let reverseSortedArray = list.sort(function (obj1, obj2) {
             if (obj1[sortBy].toLowerCase() > obj2[sortBy].toLowerCase()) return -1;
@@ -65,6 +67,7 @@ class MemberTable extends Component{
         return reverseSortedArray;
     }
 
+    /* sort member list by sortBy field type like (name, company, status, date....) */
     sortMemberList = (sortBy) => {
         var sortedMember = [];
         sortedMember = this.state.member;
@@ -83,6 +86,7 @@ class MemberTable extends Component{
         }
     }
 
+    /* handle previous pagination */
     handlePrevious(){
         if(this.state.currentPage > 1){
             this.setState({
@@ -92,6 +96,7 @@ class MemberTable extends Component{
         }
     }
 
+    /* handle next pagination */
     handleNext(){
         if(this.state.count < this.pageCount){
             this.setState({
@@ -109,14 +114,18 @@ class MemberTable extends Component{
 
     render(){
 
+        /* last member index value */
         const indexOfLastMember = this.state.currentPage * this.state.memberPerPage;
+        /* first member index value */
         const indexOfFirstMember = indexOfLastMember - this.state.memberPerPage;
         const currentMembers = this.state.member.slice(indexOfFirstMember, indexOfLastMember);
 
+        /* member list show in table */
         const renderMembers = currentMembers.map((list) => {
             return <MemberList key={list.id} member={list} checkValue={this.state.allchecked} />
         });
 
+        /* company list show in header dropdown */
         const renderCompany = this.props.lists.map((list, index) => {
             return <option key={index} id={index}>{list.company}</option>
         });

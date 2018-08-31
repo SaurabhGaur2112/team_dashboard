@@ -9,11 +9,13 @@ class SubHeader extends Component{
                 {this.props.lists}
                 <div className="header-left">
                     <div className="header-drop1">
+                        {/* header dropdown */}
                         <select value="" name="status">
                             {this.props.companyList}
                         </select>
                     </div>
                     <div className="header-drop2">
+                        {/* header status dropdown */}
                         <select value="" name="status">
                             <option value="default">Status</option>
                             <option value="closed">Closed</option>
@@ -22,6 +24,7 @@ class SubHeader extends Component{
                         </select>
                     </div>
                 </div>
+                {/* pagination  */}
                 <div className="header-right">
                     <div className="total-numberpage">
                         <span className="text-opacity">Viewing&nbsp;</span>

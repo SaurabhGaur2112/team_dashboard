@@ -11,6 +11,8 @@ export default function(state = [], action){
             var task = action.payload;
             var member = [];
             var numberOfMember = 1;
+
+            /* set number of member in localstorage with the key of totalMember */
             if(localStorage.getItem('totalMember') == null){
                 var totalMember = numberOfMember;
                 localStorage.setItem('totalMember', numberOfMember);
@@ -22,6 +24,7 @@ export default function(state = [], action){
 
             task.id = totalMember;
             
+            /* set value in localstorage with the key of member */
             if(localStorage.getItem('member') == null){
                 member.push(task);
                 localStorage.setItem('member', JSON.stringify(member));

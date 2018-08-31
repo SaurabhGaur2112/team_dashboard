@@ -30,12 +30,14 @@ class AddMemberModal extends Component{
         });
     }
 
+    /* handle all form fields */
     handleChange(event){
         this.setState({
             [event.target.name]: event.target.value
         });
     }
 
+    /* form submit */
     handleSubmit(event){
         event.preventDefault();
         this.props.memberAdd(this.state);
