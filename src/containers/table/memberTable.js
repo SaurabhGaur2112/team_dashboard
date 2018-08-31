@@ -16,11 +16,11 @@ class MemberTable extends Component{
             buttonDisable: false,
             count: 1,
             allchecked: false,
-            iconRotate: false
+            iconRotate: false,
+            totalMember: props.lists.length
         };
 
-        this.totalMember = this.state.member.length;
-        this.pageDivision = this.totalMember / this.state.memberPerPage;
+        this.pageDivision = this.state.totalMember / this.state.memberPerPage;
 
         if(Number.isInteger(this.pageDivision)){
             this.pageCount = this.pageDivision;
@@ -40,7 +40,8 @@ class MemberTable extends Component{
     componentWillReceiveProps(nextProps){
         if (nextProps.lists.length != this.props.lists.length){
             this.setState({
-                member: nextProps.lists
+                member: nextProps.lists,
+                totalMember: nextProps.lists.length
             });
         }
     }
@@ -130,8 +131,6 @@ class MemberTable extends Component{
             return <option key={index} id={index}>{list.company}</option>
         });
 
-        this.totalMember = this.totalMember + 1;
-
         return(
             <Fragment>
                 <SubHeader 
@@ -139,7 +138,7 @@ class MemberTable extends Component{
                     next={this.handleNext} 
                     indexFirstMember={indexOfFirstMember}
                     indexLastMember={indexOfLastMember}
-                    totalList={this.totalMember}
+                    totalList={this.state.totalMember}
                     companyList={renderCompany}
                 />
                 <div className="table">
