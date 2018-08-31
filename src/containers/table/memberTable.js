@@ -130,6 +130,8 @@ class MemberTable extends Component{
             return <option key={index} id={index}>{list.company}</option>
         });
 
+        this.totalMember = this.totalMember + 1;
+
         return(
             <Fragment>
                 <SubHeader 

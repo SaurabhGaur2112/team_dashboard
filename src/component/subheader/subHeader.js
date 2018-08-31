@@ -28,7 +28,7 @@ class SubHeader extends Component{
                 <div className="header-right">
                     <div className="total-numberpage">
                         <span className="text-opacity">Viewing&nbsp;</span>
-                        <span> {this.props.indexFirstMember + 1}- {this.props.indexLastMember} </span>
+                        <span> {this.props.indexFirstMember + 1} - {this.props.indexLastMember} </span>
                         <span className="text-opacity">&nbsp;of&nbsp;</span>
                         <span> {this.props.totalList} </span>
                     </div>
